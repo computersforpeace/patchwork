@@ -22,6 +22,7 @@
 
 from __future__ import print_function
 
+from __future__ import unicode_literals
 import os
 import sys
 try:
@@ -189,8 +190,7 @@ def action_list(rpc, filter, submitter_str, delegate_str, format_str=None):
             for id in ids:
                 person = rpc.person_get(id)
                 print('Patches submitted by %s <%s>:' %
-                      (unicode(person['name']).encode('utf-8'),
-                       unicode(person['email']).encode('utf-8')))
+                        (person['name'], person['email']))
                 f = filter
                 f.add("submitter_id", id)
                 patches = rpc.patch_list(f.d)
@@ -243,7 +243,7 @@ def action_info(rpc, patch_id):
     print(s)
     print('-' * len(s))
     for key, value in sorted(patch.items()):
-        print("- %- 14s: %s" % (key, unicode(value).encode("utf-8")))
+        print("- %- 14s: %s" % (key, value))
 
 def action_get(rpc, patch_id):
     patch = rpc.patch_get(patch_id)
