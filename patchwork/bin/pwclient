@@ -189,8 +189,8 @@ def action_list(rpc, filter, submitter_str, delegate_str, format_str=None):
         else:
             for id in ids:
                 person = rpc.person_get(id)
-                print('Patches submitted by %s <%s>:',
-                        person['name'], person['email'])
+                print('Patches submitted by %s <%s>:' %
+                        (person['name'], person['email']))
                 f = filter
                 f.add("submitter_id", id)
                 patches = rpc.patch_list(f.d)
@@ -205,8 +205,8 @@ def action_list(rpc, filter, submitter_str, delegate_str, format_str=None):
         else:
             for id in ids:
                 person = rpc.person_get(id)
-                print('Patches delegated to %s <%s>:',
-                      person['name'], person['email'])
+                print('Patches delegated to %s <%s>:' %
+                      (person['name'], person['email']))
                 f = filter
                 f.add("delegate_id", id)
                 patches = rpc.patch_list(f.d)
